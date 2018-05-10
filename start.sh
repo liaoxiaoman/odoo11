@@ -1,1 +1,1 @@
-nohup ./odoo-bin -c ./odoo-server-linux.conf 1>out 2>&1 &
+nohup ./odoo-bin -c ./linux-odoo-server.conf 1>out 2>&1 &
