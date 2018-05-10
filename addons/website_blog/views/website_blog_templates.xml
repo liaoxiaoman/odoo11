@@ -255,12 +255,12 @@
 
         <div id="blog_content" t-field="blog_post.content" class="blog_content mt32"/>
 
-        <!--<div class="o_blog_post_complete o_sharing_links">-->
-            <!--<a class="fa fa-twitter-square o_twitter_complete" id="o_twitter_complete"></a>-->
-            <!--<a class="fa fa-facebook-square o_facebook_complete" id="o_facebook_complete"></a>-->
-            <!--<a class="fa fa-linkedin-square o_linkedin_complete" id="o_linkedin_complete"></a>-->
-            <!--<a class="fa fa-google-plus-square o_google_complete" id="o_google_complete"></a>-->
-        <!--</div>-->
+        <div class="o_blog_post_complete o_sharing_links">
+            <a class="fa fa-twitter-square o_twitter_complete" id="o_twitter_complete"></a>
+            <a class="fa fa-facebook-square o_facebook_complete" id="o_facebook_complete"></a>
+            <a class="fa fa-linkedin-square o_linkedin_complete" id="o_linkedin_complete"></a>
+            <a class="fa fa-google-plus-square o_google_complete" id="o_google_complete"></a>
+        </div>
         <t t-set='head'>
             <t t-raw='head or ""'/>
             <!-- Facebook and linkedin sharing data -->
