@@ -10,15 +10,13 @@
                 <thead>
                     <th width="100">部位</th>
                     <th width="100">动作</th>
-                    <th width="100">重量</th>
                     <th width="100">次数</th>
-                    <th width="100">总量</th>
+                    <th width="100">得分</th>
                 </thead>
                 <tbody>
                     <tr t-foreach="work_out_lines" t-as="line">
                         <td><span t-esc="line.part_id.name"/></td>
                         <td><span t-esc="line.item_id.name"/></td>
-                        <td><span t-esc="line.weight"/></td>
                         <td><span t-esc="line.times"/></td>
                         <td><span t-esc="line.total"/></td>
                     </tr>
@@ -37,8 +35,13 @@
                         </option>
                     </t>
                 </select>
-                <div class="input_row"><input type="number" class="form-control" id="weight" name="weight" placeholder="重量" required="required"/>kg</div>
-                <div class="input_row"><input type="number" class="form-control" id="times" name="times" placeholder="次数" required="required"/>次</div>
+                <select id="weight" name="weight" class="form-control" required="required">
+                    <option value="1">八个左右就已经力竭了</option>
+                    <option value="0.8">做完12到16个很累</option>
+                    <option value="0.3">很轻松的热身组</option>
+                    <option value="1.5">拼了老命才做了几个</option>
+                </select>
+                <div class="input_row"><input type="number" class="form-control" id="times" name="times" placeholder="次数" required="required"/></div>
                 <!--确认按钮-->
                 <br/>
                 <button class="btn btn-default btn-primary">添加</button>
@@ -48,6 +51,10 @@
                 margin:20px;
                 }
                 #item_id {
+                width:200px;
+                }
+                #weight {
+                margin-top:20px;
                 width:200px;
                 }
                 .input_row {
