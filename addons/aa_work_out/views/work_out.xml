@@ -7,6 +7,7 @@
             <form string="健身记录">
                 <sheet>
                     <group>
+                        <field name="user_id"/>
                         <field name="date"/>
                     </group>
                     <group>
@@ -41,6 +42,7 @@
         <field name="model">work.out</field>
         <field name="arch" type="xml">
             <tree string="健身记录">
+                <field name="user_id"/>
                 <field name="date"/>
             </tree>
         </field>

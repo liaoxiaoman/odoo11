@@ -30,7 +30,7 @@
                 <select id="item_id" name="item_id" class="form-control" required="required">
                     <option value="">--选择动作--</option>
                     <t t-foreach="items" t-as="item">
-                        <option t-att-value="item.get('id')">
+                        <option t-att-value="item.get('id')" t-att-selected="item.get('id') == select_item_id">
                             <t t-esc="item.get('name')"/>
                         </option>
                     </t>

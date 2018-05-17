@@ -28,7 +28,7 @@ class WorkOut(http.Controller):
         work_out = request.env['work.out'].sudo().search([('user_id', '=', request.env.uid), ('date', '=', fields.Datetime.now()[0:10])], limit=1)
         if kw.get('item_id') and kw.get('weight') and kw.get('times'):
             if not work_out:
-                work_out = request.env['work.out'].create({})
+                work_out = request.env['work.out'].create({'user_id': request.env.uid})
             line_data = {
                 'work_out': work_out.id,
                 'part_id': request.env['work.out.item'].search([('id', '=', int(kw.get('item_id')))]).work_out_part.id,
@@ -39,4 +39,5 @@ class WorkOut(http.Controller):
             request.env['work.out.line'].create(line_data)
         work_out_lines = work_out.line_ids
         values['work_out_lines'] = work_out_lines
+        values['select_item_id'] = int(kw.get('item_id')) if kw.get('item_id') else 0
         return request.render("aa_work_out.index", values)
