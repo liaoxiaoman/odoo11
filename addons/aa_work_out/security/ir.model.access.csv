@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_work_out,access_work_out,model_work_out,,1,1,1,1
+access_work_out_line,access_work_out_line,model_work_out_line,,1,1,1,1
+access_work_out_part,access_work_out_part,model_work_out_part,,1,1,1,1
+access_work_out_item,access_work_out_item,model_work_out_item,,1,1,1,1

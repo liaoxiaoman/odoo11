@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!-- Page -->
+<template id="index" name="健身记录">
+    <t t-call="website.layout">
+        <div id="wrap">
+            <table>
+                <thead>
+                    <th width="100">部位</th>
+                    <th width="100">动作</th>
+                    <th width="100">重量</th>
+                    <th width="100">次数</th>
+                    <th width="100">总量</th>
+                </thead>
+                <tbody>
+                    <tr t-foreach="work_out_lines" t-as="line">
+                        <td><span t-esc="line.part_id.name"/></td>
+                        <td><span t-esc="line.item_id.name"/></td>
+                        <td><span t-esc="line.weight"/></td>
+                        <td><span t-esc="line.times"/></td>
+                        <td><span t-esc="line.total"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <br/>
+            <br/>
+            <form action="/work_out" method="post" role="form">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <select id="item_id" name="item_id" class="form-control" required="required">
+                    <option value="">--选择动作--</option>
+                    <t t-foreach="items" t-as="item">
+                        <option t-att-value="item.get('id')">
+                            <t t-esc="item.get('name')"/>
+                        </option>
+                    </t>
+                </select>
+                <div class="input_row"><input type="number" class="form-control" id="weight" name="weight" placeholder="重量" required="required"/>kg</div>
+                <div class="input_row"><input type="number" class="form-control" id="times" name="times" placeholder="次数" required="required"/>次</div>
+                <!--确认按钮-->
+                <br/>
+                <button class="btn btn-default btn-primary">添加</button>
+            </form>
+            <style type="text/css">
+                #wrap {
+                margin:20px;
+                }
+                #item_id {
+                width:200px;
+                }
+                .input_row {
+                margin-top:20px;
+                height:30px;
+                }
+                .input_row input {
+                width:200px;
+                height:30px;
+                float: left;
+                }
+            </style>
+        </div>
+    </t>
+</template>
+
+
+
+</odoo>

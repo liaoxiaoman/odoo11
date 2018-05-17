@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="menu_work_out_template" model="website.menu">
+            <field name="name">健身记录</field>
+            <field name="url" eval="'/work_out'"/>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">20</field>
+            <field name="website_id" ref="website.default_website"/>
+        </record>
+    </data>
+</odoo>
