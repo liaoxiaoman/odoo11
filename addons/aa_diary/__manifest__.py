@@ -13,7 +13,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        # 'views/diary.xml',
+        'views/diary.xml',
         'views/diary_template.xml',
         'data/diary_data.xml',
     ],
