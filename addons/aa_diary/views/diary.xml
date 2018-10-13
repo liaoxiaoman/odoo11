@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_work_out_form">
+        <field name="name">健身记录form</field>
+        <field name="model">work.out</field>
+        <field name="arch" type="xml">
+            <form string="健身记录">
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="date"/>
+                    </group>
+                    <group>
+                        <field name="line_ids">
+                            <tree editable="top">
+                                <field name="part_id"/>
+                                <field name="item_id"/>
+                                <field name="weight"/>
+                                <field name="times"/>
+                                <field name="total"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group col="4">
+                                        <field name="part_id"/>
+                                        <field name="item_id"/>
+                                        <field name="weight"/>
+                                        <field name="times"/>
+                                        <field name="total"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_work_out_tree">
+        <field name="name">健身记录tree</field>
+        <field name="model">work.out</field>
+        <field name="arch" type="xml">
+            <tree string="健身记录">
+                <field name="user_id"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_work_out">
+        <field name="name">健身记录action</field>
+        <field name="res_model">work.out</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="view_work_out_part_form">
+        <field name="name">部位form</field>
+        <field name="model">work.out.part</field>
+        <field name="arch" type="xml">
+            <form string="部位">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="items">
+                            <tree editable="top">
+                                <field name="name"/>
+                                <field name="score"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group col="4">
+                                        <field name="name"/>
+                                        <field name="score"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_work_out_part_tree">
+        <field name="name">部位tree</field>
+        <field name="model">work.out.part</field>
+        <field name="arch" type="xml">
+            <tree string="部位">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_work_out_part">
+        <field name="name">部位action</field>
+        <field name="res_model">work.out.part</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="root_work_out" name="运动记录" sequence="10"/>
+        <menuitem id="menu_work_out" name="日记录" action="action_work_out" parent="root_work_out" sequence="1"/>
+        <menuitem id="menu_work_out_setting" name="配置" parent="root_work_out" sequence="2"/>
+            <menuitem id="menu_work_out_part" name="部位" action="action_work_out_part" parent="menu_work_out_setting" sequence="1"/>
+
+</odoo>
