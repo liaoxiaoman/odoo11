@@ -6,14 +6,14 @@
 <template id="index" name="日记">
     <t t-call="website.layout">
         <div id="wrap">
-            <table style="table-layout:fixed">
+            <table style="table-layout:fixed; line-height: 40px;">
                 <thead>
                     <th width="200">内容</th>
                     <th width="100">日期</th>
                     <th width="100">作者</th>
                 </thead>
                 <tbody>
-                    <tr t-foreach="diarys" t-as="diary">
+                    <tr t-foreach="diarys" t-as="diary" style="margin-bottom: ">
                         <td width="60%" style="word-break : break-all; "><span t-esc="diary.get('text')"/></td>
                         <td><span t-esc="diary.get('date')"/></td>
                         <td><span t-esc="diary.get('user')"/></td>
