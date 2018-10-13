@@ -26,9 +26,18 @@
             <form action="/diary" method="post" role="form">
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                 <div class="input_row">
-                    <input type="text" class="form-control" id="text" name="text" placeholder="记录新的一天吧" required="required"/>
+                    <textarea class="form-control" id="text" name="text" placeholder="记录新的一天吧" required="required"/>
                 </div>
                 <!--确认按钮-->
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <br/>
                 <button class="btn btn-default btn-primary">添加</button>
             </form>
@@ -40,10 +49,9 @@
                 margin-top:20px;
                 height:30px;
                 }
-                .input_row input {
-                width:200px;
-                height:30px;
-                float: left;
+                .input_row textarea {
+                height: 200px;
+                width: 80%;
                 }
             </style>
         </div>

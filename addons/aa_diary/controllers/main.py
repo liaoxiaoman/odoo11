@@ -18,11 +18,12 @@ class Diary(http.Controller):
             return request.render('web.login', context)
         if request.env.uid in [8, 6]:
             if kw.get('text'):
-                diary_data = {
-                    'text': kw.get('text'),
-                    'user_id': request.env.uid,
-                }
-                request.env['diary'].create(diary_data)
+                if not request.env['diary'].sudo().search([('text', '=', kw.get('text'))]):
+                    diary_data = {
+                        'text': kw.get('text'),
+                        'user_id': request.env.uid,
+                    }
+                    request.env['diary'].create(diary_data)
             values = {}
             diarys = request.env['diary'].sudo().search([])
             data = []
