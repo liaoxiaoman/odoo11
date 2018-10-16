@@ -31,7 +31,7 @@ class Diary(http.Controller):
                 data.append({
                     'date': i.date[5:],
                     'id': i.id,
-                    'text': i.text[0:9],
+                    'text': i.text[0:12],
                     'user': i.user_id.name,
                 })
             values['diarys'] = data
@@ -42,4 +42,4 @@ class Diary(http.Controller):
     @http.route(['/get_details/<int:detail_id>'], type='http', auth="public", website=True, methods=['POST', 'GET'])
     def get_details(self, detail_id, **kw):
         detail = request.env['diary'].sudo().browse(detail_id).text
-        return detail
+        return request.render("aa_diary.detail", {'detail': detail})
