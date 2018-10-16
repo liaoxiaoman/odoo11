@@ -3,7 +3,7 @@
 
 from odoo import http, fields, _
 from odoo.http import request
-
+import json
 
 class Diary(http.Controller):
     @http.route(['/diary'], type='http', auth="public", website=True, methods=['POST', 'GET'])
@@ -31,10 +31,15 @@ class Diary(http.Controller):
                 data.append({
                     'date': i.date[5:],
                     'id': i.id,
-                    'text': i.text,
+                    'text': i.text[0:9],
                     'user': i.user_id.name,
                 })
             values['diarys'] = data
             return request.render("aa_diary.index", values)
         else:
             return request.redirect('/contactus')
+
+    @http.route(['/get_details/<int:detail_id>'], type='http', auth="public", website=True, methods=['POST', 'GET'])
+    def get_details(self, detail_id, **kw):
+        detail = request.env['diary'].sudo().browse(detail_id).text
+        return detail

@@ -14,7 +14,11 @@
                 </thead>
                 <tbody>
                     <tr t-foreach="diarys" t-as="diary">
-                        <td width="60%" style="word-break : break-all; "><span t-esc="diary.get('text')"/></td>
+                        <td width="60%" style="word-break : break-all; ">
+                            <a t-att-href="'/get_details/%s' % (diary.get('id'))">
+                                <span t-esc="diary.get('text')"/>
+                            </a>
+                        </td>
                         <td><span t-esc="diary.get('date')"/></td>
                         <td><span t-esc="diary.get('user')"/></td>
                     </tr>
