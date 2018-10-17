@@ -31,7 +31,7 @@ class Diary(http.Controller):
                 data.append({
                     'date': i.date[5:],
                     'id': i.id,
-                    'text': i.text[0:12],
+                    'text': i.text[0:12]+'...',
                     'user': i.user_id.name,
                 })
             values['diarys'] = data
