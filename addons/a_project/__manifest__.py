@@ -16,6 +16,7 @@
     'version': '0.1',
     'depends': ['base'],
     'data': [
+        'security/project_security.xml',
         'security/ir.model.access.csv',
         'views/task_task.xml',
     ],
