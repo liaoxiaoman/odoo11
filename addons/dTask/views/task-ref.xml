@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.actions.server" id="action_version_mark">
+            <field name="name">版本标记</field>
+            <field name="model_id" ref="dTask.model_dtask_task"/>
+            <field name="code">
+                if records:
+                action = records.button_version_mark()
+            </field>
+        </record>
+
+        <record model="ir.values" id="action_version_mark1">
+            <field name="model_id" ref="dTask.model_dtask_task"/>
+            <field name="name">版本标记</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,' +str(ref('action_version_mark'))"/>
+            <field name="key">action</field>
+            <field name="model">dtask.task</field>
+        </record>
+    </data>
+</odoo>

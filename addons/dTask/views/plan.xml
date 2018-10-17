@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="dtask_plan_tree" model="ir.ui.view">
+            <field name="name">计划</field>
+            <field name="model">dtask.plan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="milestone_id"/>
+                    <field name="deadline"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dtask_plan_form" model="ir.ui.view">
+            <field name="name">dtaks.plan</field>
+            <field name="model">dtask.plan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="milestone_id"/>
+                            <field name="deadline"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="dtask_plan_action" model="ir.actions.act_window">
+            <field name="name">计划</field>
+            <field name="res_model">dtask.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--<menuitem id="dtask_plan_menu" name="计划" parent="dtask"/>-->
+        <!--<menuitem id="dtask_plan" name="计划" action="dtask_plan_action" parent="dtask_plan_menu"/>-->
+    </data>
+</odoo>

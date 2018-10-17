@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="dtask_project_description_tree" model="ir.ui.view">
+            <field name="name">项目进度描述</field>
+            <field name="model">dtask.project_description</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!--<field name="project_id"/>-->
+                    <field name="time"/>
+                    <field name="completeness"/>
+                    <field name="project_description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dtask_project_description_form" model="ir.ui.view">
+            <field name="name">dtaks.project_description</field>
+            <field name="model">dtask.project_description</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <!--<field name="project_id"/>-->
+                            <field name="time"/>
+                            <field name="completeness"/>
+                            <field name="project_description" placeholder="请概括描述本项目当前进展，风险，困难及后续计划..."/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="dtask_project_description_action" model="ir.actions.act_window">
+            <field name="name">项目进度描述</field>
+            <field name="res_model">dtask.project_description</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--<menuitem id="dtask_project_description_menu" name="项目进度描述" parent="dtask"/>-->
+        <!--<menuitem id="dtask_project_description" name="项目进度描述" action="dtask_project_description_action" parent="dtask_project_description_menu"/>-->
+    </data>
+</odoo>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="dtask_project_tree" model="ir.ui.view">
+            <field name="name">项目</field>
+            <field name="model">dtask.project</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="project_name"/>
+                    <field name="project_manager_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dtask_project_form" model="ir.ui.view">
+            <field name="name">dtaks.project</field>
+            <field name="model">dtask.project</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="project_name"/>
+                            <field name="project_manager_id"/>
+                            <field name="project_remarks"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="计划">
+                                    <field name="plan_ids"/>
+                                </page>
+                                <page string="项目进度描述">
+                                    <field name="project_description_ids"/>
+                                </page>
+                                <page string="项目文档">
+                                    <field name="project_attachment_ids">
+                                        <tree editable="bottom">
+                                            <field name="filename" invisible="1"/>
+                                            <field name="data" filename="filename"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="dtask_project_action" model="ir.actions.act_window">
+            <field name="name">项目</field>
+            <field name="res_model">dtask.project</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="dtask_milestone_action" model="ir.actions.act_window">
+            <field name="name">里程碑</field>
+            <field name="res_model">dtask.milestone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="dtask_project_menu" name="项目" parent="dtask"/>
+        <menuitem id="dtask_project" name="项目" action="dtask_project_action" parent="dtask_project_menu"/>
+        <menuitem id="dtask_milestone" name="里程碑" action="dtask_milestone_action" parent="dtask_project_menu"/>
+
+        <record id="dtask_project_tree" model="ir.ui.view">
+            <field name="name">公共模块</field>
+            <field name="model">dtask.problem</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="desc"/>
+                    <field name="user_crea"/>
+                    <field name="user_comm"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dtask_Problem_form" model="ir.ui.view">
+            <field name="name">公共模块</field>
+            <field name="model">dtask.problem</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_commit" type="object" string="提交" class="btn-primary"
+                            attrs="{'invisible':[('state','=','finish')]}"/>
+                         <field name="state" widget="statusbar" statusbar_visible="ongoing,finish"/>
+                    </header>
+                    <sheet>
+                        <group >
+                            <group >
+                                <field name="desc"/>
+
+                            </group>
+                        </group>
+                        <group >
+                            <group >
+                                <field name="user_crea"/>
+                                <field name="state" />
+                            </group>
+                             <group >
+
+                                <field name="user_comm"/>
+
+                            </group>
+                        </group>
+                        <group >
+                             <field name="note" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="dtask_Problem_action" model="ir.actions.act_window">
+            <field name="name">公共模块</field>
+            <field name="res_model">dtask.problem</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="Problem_menu" name="公共模块"  />
+        <menuitem id="problem_menu1" name="公共模块"   parent="Problem_menu"/>
+        <menuitem id="dtask_Problem" name="公共模块" action="dtask_Problem_action" parent="problem_menu1"/>
+
+    </data>
+
+    <record id="action_export_dtask_project" model="ir.actions.server">
+        <field name="name">周报导出</field>
+        <field name="model_id" ref="model_dtask_project"/>
+        <field name="state">code</field>
+        <field name="code">
+            if context.get('active_model') == 'dtask.project' and context.get('active_ids'):
+            action = {
+            'type': 'ir.actions.act_url',
+            'url': '/web/export/project_weekly/?ids=%s'%str(context.get('active_ids')),
+            'target': 'self',
+            }
+        </field>
+    </record>
+
+    <record id="ir_export_dtask_project" model="ir.values">
+        <field eval="'client_action_multi'" name="key2"/>
+        <field eval="'dtask.project'" name="model"/>
+        <field name="name">周报导出</field>
+        <field eval="'ir.actions.server,%d'%action_export_dtask_project" name="value"/>
+    </record>
+</odoo>

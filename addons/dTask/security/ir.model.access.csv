@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dtsak_plan,dtask.plan,model_dtask_plan,,1,1,1,1
+access_dtsak_project,dtask.project,model_dtask_project,,1,1,1,1
+access_dtsak_attachment,dtask.attachment,model_dtask_attachment,,1,1,1,1
+access_dtsak_project_description,dtask.project_description,model_dtask_project_description,,1,1,1,1
+access_dtsak_task,dtask.task,model_dtask_task,,1,1,1,1
