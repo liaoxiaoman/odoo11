@@ -20,7 +20,7 @@
                             </a>
                         </td>
                         <td><span t-esc="diary.get('date')"/></td>
-                        <td t-att-style="'color: deeppink;' if diary.get('user_id') == 8 else 'color: deepskyblue;'"><span t-esc="diary.get('user')"/></td>
+                        <td t-att-style="'color: pink;' if diary.get('user_id') == 8 else 'color: deepskyblue;'"><span t-esc="diary.get('user')"/></td>
                     </tr>
                 </tbody>
             </table>
@@ -66,7 +66,7 @@
                     </t>
                 </div>
                 <t t-foreach="comments" t-as="comment">
-                    <div t-att-style="'margin-top: 20px;height: auto;' + ('color: deeppink;' if comment.user_id.id == 8 else 'color: deepskyblue;')">
+                    <div t-att-style="'margin-top: 20px;height: auto;' + ('color: pink;' if comment.user_id.id == 8 else 'color: deepskyblue;')">
                         <p style="font-size: 18px;width: 100%;display: block;line-height: 30px;margin-top: 10px;display:inline;font-weight: bold;">
                             <t t-esc="comment.user_id.name"/>:
                         </p>
